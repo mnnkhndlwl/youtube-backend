@@ -30,9 +30,7 @@ export const signin = async (req, res, next) => {
     const { password, ...others } = user._doc; // as we don't want to dend our password in response
 
     res.cookie("access_token", token,{
-        httpOnly: true,
     }).status(200).json(others);
-
 
   } catch (error) {
     next(error);
