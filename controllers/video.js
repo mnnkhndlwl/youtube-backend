@@ -101,6 +101,15 @@ export const sub = async (req, res, next) => { // in subscribed users array we h
   }
 };
 
+export const set = async (req, res, next) => { 
+  try {
+    const videos = await Video.find({userId: req.user.id});
+    res.status(200).json(videos);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const getByTag = async (req, res, next) => {
     const tags = req.query.tags.split(","); // query is part of url after the question mark
     try {
